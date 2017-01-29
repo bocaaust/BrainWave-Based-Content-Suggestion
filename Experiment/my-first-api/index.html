@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My first API</title>
+    <script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="keys.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+	<h1>GIF Suggester</h1>
+	<div>
+	<input type="text" id="imgurl" placeholder="Image URL"/>
+    <button onclick="run(document.getElementById('imgurl').value)">Suggest!</button>
+	</div>
+	<h4>Image Tags:</h4>
+	<div id="tags"></div>
+	<h4>Original Image:</h4>
+	<img id="originalImage" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Enter a URL to See a Suggested GIF" width="200px" />
+	<h4>Suggested GIF</h4>
+	<video width="320" height="240" controls>
+  <source src="" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</body>
+</html>
