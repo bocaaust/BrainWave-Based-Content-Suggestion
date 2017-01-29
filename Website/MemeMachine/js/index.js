@@ -85,6 +85,7 @@ function postImage(imgurl) {
 }
 
 function altParse(){
+	document.getElementById('third').hidden = false;
 	var tags = [];
 	var resp = JSON.parse(localStorage.getItem('data'));
 	 if (resp.status_code === 'OK') {
@@ -106,6 +107,7 @@ function altParse(){
 }
 
 function parseResponse(resp) {
+	document.getElementById('third').hidden = false;
 	localStorage.setItem('data',JSON.stringify(resp));
   var tags = [];
   if (resp.status_code === 'OK') {
