@@ -124,7 +124,7 @@ function parseResponse(resp) {
 	var url = 'https://api.gfycat.com/v1test/gfycats/search?search_text=';
 	axios.get(url + tags[0].toString() + ',' + tags[2].toString() + ',' + tags[3].toString()  + ',' + tags[Math.floor(3 + (Math.random()*6))].toString()).then(function(r) {
 		//console.log(r.data.gfycats[Math.floor((Math.random() * 10))]);
-		document.getElementById('suggested').src = r.data.gfycats[Math.floor((Math.random() * 10))].gifUrl;
+		document.getElementById('suggested').src = r.data.gfycats[Math.floor((Math.random() * r.data.gfycats.length))].gifUrl;
 		document.getElementById('third').hidden = false;
 	}, function(err) {
     console.log('Sorry, something is wrong: ' + err);
