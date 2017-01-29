@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Meme Machine</title>
+    <script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="keys.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid text-center">
+<div class="animated fadeIn first">
+	<h1>Meme Machine</h1>
+	<div>
+	<input type="text" id="imgurl" style="color:black;" placeholder="Image URL"/>
+    <button onclick="run(document.getElementById('imgurl').value)" style="color:black;">Suggest!</button>
+	</div>
+	</div>
+	<div id="output" class="animated zoomIn first">
+	
+	<h4>Original Image:</h4>
+	<img id="originalImage" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Enter a URL to See a Suggested GIF" width="300px" />
+	<div id="second" class="animated zoomIn first">
+	<h4>Image Tags:</h4>
+	<div id="tags"></div>
+	<div id="third" class="animated zoomIn first">
+	<h4>Suggested GIF</h4>
+	<img id="suggested" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Enter a URL to See a Suggested GIF" width="300px" />
+		</div>
+	</div>
+	</div>
+	</div>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/jquery-1.11.3.min.js"></script>
+
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+	document.getElementById('output').hidden = true;
+</script>
