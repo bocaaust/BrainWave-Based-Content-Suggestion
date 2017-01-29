@@ -28,7 +28,17 @@ function getGifCredentials(){
     "client_id": gif_client_id,
     "client_secret": gif_client_secret
   };
-	var url = 'https://api.gfycat.com/v1/oauth/token';
+	var url2 = 'https://api.gfycat.com/v1/oauth/token';
+	return axios.post(url2, data2, {
+    
+  }).then(function(r) {
+    localStorage.setItem('gifaccessToken', r.data.access_token);
+    
+    //callbackFunction();
+  }, function(err) {
+    console.log(err);
+  });
+	
 }
 
 function transformDataToParams(data) {
@@ -76,6 +86,14 @@ function parseResponse(resp) {
     console.log('Sorry, something is wrong.');
   }
     document.getElementById('tags').innerHTML = tags.toString().replace(/,/g, ', ');
+	console.log(tags[1].toString());
+	var url = 'https://api.gfycat.com/v1test/gfycats/search?search_text=';
+	axios.get(url + tags[0].toString() + '?count=1').then(function(r) {
+		console.log(r.data.gfycats[0]);
+		document.getElementById('suggested').src = r.data.gfycats[0].gifUrl;
+	}, function(err) {
+    console.log('Sorry, something is wrong: ' + err);
+  });
   return tags;
 }
 
