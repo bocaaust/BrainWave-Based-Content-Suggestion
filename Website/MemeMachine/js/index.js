@@ -133,6 +133,8 @@ function run(imgurl) {
 	document.getElementById('output').hidden = false;
 	//document.getElementById('output').className += "animated zoomIn first";
 	document.getElementById('second').hidden = true;
+	}else{
+		document.getElementById('output').hidden = false;
 	}
   if (Math.floor(Date.now() / 1000) - localStorage.getItem('tokenTimeStamp') > 86400 || localStorage.getItem('accessToken') === null) {
     getCredentials(function() {
