@@ -59,12 +59,13 @@ function transformDataToParams(data) {
 }
 
 function postImage(imgurl) {
+	document.getElementById('originalImage').src = imgurl;
 	if (localStorage.getItem('imgurl') === imgurl) {
 		altParse();
+		
 		//return localStorage.getItem('data');
 	}else{
 		localStorage.setItem('imgurl', imgurl);
-	document.getElementById('originalImage').src = imgurl;
 	
   var accessToken = localStorage.getItem('accessToken');
   var data = {
@@ -92,6 +93,7 @@ function altParse(){
   } else {
     console.log('Sorry, something is wrong.');
   }
+	 document.getElementById('tags').innerHTML = tags.toString().replace(/,/g, ', ');
 	var url = 'https://api.gfycat.com/v1test/gfycats/search?search_text=';
 	axios.get(url + tags[0].toString() + ',' + tags[2].toString() + ',' + tags[3].toString()  + ',' + tags[Math.floor(3 + (Math.random()*6))].toString()).then(function(r) {
 		//console.log(r.data.gfycats[Math.floor((Math.random() * 10))]);
