@@ -11,9 +11,19 @@
 </head>
 <body>
 <div class="row" style="
-width:100vw;margin-bottom:12px;">
-<div class="col-sm-4 col-sm-offset-1 col-xs-12">
+margin-bottom:12px; overflow-x:hidden;">
+<div class="col-sm-4 col-sm-offset-1 col-xs-12 text-center">
 	<img src="img/meme_logo.jpg" width="100%" alt="Meme"/>
+	<h3 style="display: inline;">Popular Tags</h3>
+	<button onclick="reset()" style="color:black; display: inline;">Reset</button>
+	<div id="popular" class="container-fluid">
+	
+	</div>
+	<div id="cloudSuggestion">
+	<h4> Trending Suggestion</h4>
+	<img id="cloudImage" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="No Matching Images" width="100%" />
+	</div>
+	
 	</div>
 	<div class="col-sm-6 col-xs-12">
 <div class="container-fluid text-center">
@@ -51,4 +61,5 @@ width:100vw;margin-bottom:12px;">
 
 <script type="text/javascript">
 	document.getElementById('output').hidden = true;
+	document.getElementById('cloudSuggestion').hidden = true;
 </script>
