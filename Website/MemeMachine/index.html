@@ -16,7 +16,7 @@ margin-bottom:12px; overflow-x:hidden;">
 	<img src="img/meme_logo.jpg" width="100%" alt="Meme"/>
 	<h3 style="display: inline;">Popular Tags</h3>
 	<button onclick="reset()" style="color:black; display: inline;">Reset</button>
-	<div id="popular" class="container-fluid">
+	<div id="popular" class="container-fluid" style="margin-top: 8px;">
 	
 	</div>
 	<div id="cloudSuggestion">
@@ -62,4 +62,7 @@ margin-bottom:12px; overflow-x:hidden;">
 <script type="text/javascript">
 	document.getElementById('output').hidden = true;
 	document.getElementById('cloudSuggestion').hidden = true;
+	if (localStorage.getItem('popularTags') !== 'empty'){
+		generateCloud(JSON.parse(localStorage.getItem('popularTags')),JSON.parse(localStorage.getItem('popularWeights')));
+	}
 </script>
