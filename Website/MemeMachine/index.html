@@ -64,5 +64,6 @@ margin-bottom:12px; overflow-x:hidden;">
 	document.getElementById('cloudSuggestion').hidden = true;
 	if (localStorage.getItem('popularTags') !== 'empty'){
 		generateCloud(JSON.parse(localStorage.getItem('popularTags')),JSON.parse(localStorage.getItem('popularWeights')));
+		cloudGif(JSON.parse(localStorage.getItem('popularTags')),JSON.parse(localStorage.getItem('popularWeights')));
 	}
 </script>

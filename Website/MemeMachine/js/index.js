@@ -121,7 +121,7 @@ function tagCloud(current){
 	localStorage.setItem('popularTags',JSON.stringify(tags2));
 	localStorage.setItem('popularWeights',JSON.stringify(weights));
 	generateCloud(tags2,weights);
-	//cloudGif(tags,weights);
+	cloudGif(tags,weights);
 }
 
 function cloudGif(tags,weights){ 
@@ -134,13 +134,13 @@ function cloudGif(tags,weights){
 
 	var url = 'https://api.gfycat.com/v1test/gfycats/search?search_text=';
 
-	axios.get(url + tags[0].toString() + ',' + tags[2].toString() + ',' + tags[3].toString()  + ',' + tags[Math.floor(3 + (Math.random()*(tags.length-3)))].toString()).then(function(r) {
+	axios.get(url + tags[0].toString() + ',' + tags[1].toString() + ',' + tags[2].toString() ).then(function(r) {
 
 		//console.log(r.data.gfycats[Math.floor((Math.random() * 10))]);
 
 		if (r.data.gfycats.length > 0){
 
-		document.getElementById('suggested').src = r.data.gfycats[Math.floor((Math.random() * r.data.gfycats.length))].gifUrl;
+		document.getElementById('cloudImage').src = r.data.gfycats[Math.floor((Math.random() * r.data.gfycats.length))].gifUrl;
 
 	}else{
 
@@ -270,9 +270,6 @@ function parseResponse(resp) {
 
 
 
-//function cloudGif(tags,weights){
-	
-//}
 
 function generateCloud(tags3,weights){
 	console.log(tags3.length);
