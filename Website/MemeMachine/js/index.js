@@ -120,8 +120,10 @@ function tagCloud(current){
 	}
 	localStorage.setItem('popularTags',JSON.stringify(tags2));
 	localStorage.setItem('popularWeights',JSON.stringify(weights));
+	if(document.getElementById('imgurl').value !== localStorage.getItem('imgurl')){
 	generateCloud(tags2,weights);
 	cloudGif(tags,weights);
+	}
 }
 
 function cloudGif(tags,weights){ 
