@@ -88,7 +88,7 @@ function tagCloud(current){
 	//console.log(localStorage.getItem('popularTags'));
 	//console.log(localStorage.getItem('popularTags') === null);
 		//console.log(localStorage.getItem('popularTags') === '');
-	if (localStorage.getItem('popularTags') === 'empty'){
+	if (localStorage.getItem('popularTags') === 'empty' || localStorage.popularTags === undefined){
 	
 		
 		var tags2 = [];
@@ -120,9 +120,9 @@ function tagCloud(current){
 	}
 	localStorage.setItem('popularTags',JSON.stringify(tags2));
 	localStorage.setItem('popularWeights',JSON.stringify(weights));
-	if(document.getElementById('imgurl').value !== localStorage.getItem('imgurl')){
+	if(document.getElementById('imgurl').value !== localStorage.getItem('imgurl') || document.getElementById('cloudSuggestion').hidden === true){
 	generateCloud(tags2,weights);
-	cloudGif(tags,weights);
+	cloudGif(tags2,weights);
 	}
 }
 
@@ -149,6 +149,7 @@ function cloudGif(tags,weights){
 		document.getElementById('cloudImage').src = 'https://az853139.vo.msecnd.net/static/images/not-found.png';
 
 	}
+		document.getElementById('cloudImage').hidden = false;
 
 		document.getElementById('cloudSuggestion').hidden = false;
 
@@ -159,8 +160,9 @@ function cloudGif(tags,weights){
   });
 
 
-
-
+	document.getElementById('popular').hidden = false;
+	document.getElementById('cloudSuggestion').hidden = false;
+	
 
 } 
 
@@ -245,7 +247,7 @@ function parseResponse(resp) {
   if (resp.status_code === 'OK') {
     var results = resp.results;
     tags = results[0].result.tag.classes;
-	  tagCloud(tags);
+	 tagCloud(results[0].result.tag.classes);
   } else {
     console.log('Sorry, something is wrong.');
   }
@@ -274,7 +276,7 @@ function parseResponse(resp) {
 
 
 function generateCloud(tags3,weights){
-	console.log(tags3.length);
+	//console.log(tags3.length);
 	var container = document.getElementById('popular');
 	while (container.firstChild) {
     container.removeChild(container.firstChild);

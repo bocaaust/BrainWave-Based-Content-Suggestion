@@ -17,7 +17,7 @@ margin-bottom:12px; overflow-x:hidden;">
 	<h3 style="display: inline;">Popular Tags</h3>
 	<button onclick="reset()" style="color:black; display: inline;">Reset</button>
 	<div id="popular" class="container-fluid" style="margin-top: 8px;">
-	
+		<h4>None Available</h4>
 	</div>
 	<div id="cloudSuggestion">
 	<h4> Trending Suggestion</h4>
@@ -60,9 +60,11 @@ margin-bottom:12px; overflow-x:hidden;">
 </html>
 
 <script type="text/javascript">
+	//reset();
 	document.getElementById('output').hidden = true;
-	document.getElementById('cloudSuggestion').hidden = true;
-	if (localStorage.getItem('popularTags') !== 'empty'){
+	if (document.getElementById('cloudImage').src === 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'){
+	document.getElementById('cloudSuggestion').hidden = true;}
+	if (localStorage.getItem('popularTags') !== 'empty' && localStorage.popularTags !== undefined){
 		generateCloud(JSON.parse(localStorage.getItem('popularTags')),JSON.parse(localStorage.getItem('popularWeights')));
 		cloudGif(JSON.parse(localStorage.getItem('popularTags')),JSON.parse(localStorage.getItem('popularWeights')));
 	}
