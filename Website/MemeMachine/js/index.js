@@ -124,6 +124,91 @@ function tagCloud(current){
 	//cloudGif(tags,weights);
 }
 
+function cloudGif(tags,weights){ 
+
+
+
+	var tags = top(tags,weights);	
+
+
+
+	var url = 'https://api.gfycat.com/v1test/gfycats/search?search_text=';
+
+	axios.get(url + tags[0].toString() + ',' + tags[2].toString() + ',' + tags[3].toString()  + ',' + tags[Math.floor(3 + (Math.random()*(tags.length-3)))].toString()).then(function(r) {
+
+		//console.log(r.data.gfycats[Math.floor((Math.random() * 10))]);
+
+		if (r.data.gfycats.length > 0){
+
+		document.getElementById('suggested').src = r.data.gfycats[Math.floor((Math.random() * r.data.gfycats.length))].gifUrl;
+
+	}else{
+
+		document.getElementById('cloudImage').src = 'https://az853139.vo.msecnd.net/static/images/not-found.png';
+
+	}
+
+		document.getElementById('cloudSuggestion').hidden = false;
+
+	}, function(err) {
+
+    console.log('Sorry, something is wrong: ' + err);
+
+  });
+
+
+
+
+
+} 
+
+
+
+function top(tags,weights) {
+
+	var output = [];
+	var temp = weights;
+	var check = 0;
+	if (tags.length === 2){
+		check = 1;
+	}
+	if (tags.length === 1){
+		check = 2;
+	}
+
+	for (n = 0; n < 3 - check; n++){
+
+		var position = highest(tags, temp);
+		output[n] = tags[position];
+		temp[n] = 0;
+
+		
+
+	}
+	return output;
+
+}
+
+
+
+function highest(tags,weights) {
+
+	var output = 0;
+
+	for (i = 0; i < tags.length; i++){
+
+		if (weights[i] > weights[output]){
+
+			output = i;
+
+		}
+
+	}
+
+	return output;
+
+}
+
 function altParse(){
 	//document.getElementById('third').hidden = false;
 	var tags = [];
